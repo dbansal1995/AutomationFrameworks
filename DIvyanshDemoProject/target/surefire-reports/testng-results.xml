@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-10-31T00:35:33 IST" name="All Test Suite" finished-at="2025-10-31T00:36:24 IST" duration-ms="50940">
+    <groups>
+      <group name="smoke">
+        <method signature="SmokeTestCases.RegisterNewAccountWithInvalidDetails()[pri:0, instance:org.example.SmokeTestCases@30f842ca]" name="RegisterNewAccountWithInvalidDetails" class="org.example.SmokeTestCases"/>
+        <method signature="SmokeTestCases.VerifySearchFuntioanlity()[pri:0, instance:org.example.SmokeTestCases@30f842ca]" name="VerifySearchFuntioanlity" class="org.example.SmokeTestCases"/>
+      </group> <!-- smoke -->
+    </groups>
+    <test started-at="2025-10-31T00:35:33 IST" name="TestCases" finished-at="2025-10-31T00:36:24 IST" duration-ms="50940">
+      <class name="org.example.SmokeTestCases">
+        <test-method is-config="true" signature="TearUp()[pri:0, instance:org.example.SmokeTestCases@30f842ca]" started-at="2025-10-31T00:35:33 IST" name="TearUp" finished-at="2025-10-31T00:36:02 IST" duration-ms="29668" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearUp -->
+        <test-method signature="VerifySearchFuntioanlity()[pri:0, instance:org.example.SmokeTestCases@30f842ca]" started-at="2025-10-31T00:36:02 IST" name="VerifySearchFuntioanlity" finished-at="2025-10-31T00:36:03 IST" duration-ms="565" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerifySearchFuntioanlity -->
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:org.example.SmokeTestCases@30f842ca]" started-at="2025-10-31T00:36:03 IST" name="TearDown" finished-at="2025-10-31T00:36:04 IST" duration-ms="1076" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearDown -->
+        <test-method is-config="true" signature="TearUp()[pri:0, instance:org.example.SmokeTestCases@30f842ca]" started-at="2025-10-31T00:36:04 IST" name="TearUp" finished-at="2025-10-31T00:36:08 IST" duration-ms="4196" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearUp -->
+        <test-method signature="RegisterNewAccountWithInvalidDetails()[pri:0, instance:org.example.SmokeTestCases@30f842ca]" started-at="2025-10-31T00:36:08 IST" name="RegisterNewAccountWithInvalidDetails" finished-at="2025-10-31T00:36:09 IST" duration-ms="1046" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- RegisterNewAccountWithInvalidDetails -->
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:org.example.SmokeTestCases@30f842ca]" started-at="2025-10-31T00:36:09 IST" name="TearDown" finished-at="2025-10-31T00:36:10 IST" duration-ms="928" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearDown -->
+        <test-method is-config="true" signature="TearUp()[pri:0, instance:org.example.SmokeTestCases@30f842ca]" started-at="2025-10-31T00:36:10 IST" name="TearUp" finished-at="2025-10-31T00:36:14 IST" duration-ms="3812" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearUp -->
+        <test-method signature="RegisterNewAccountWithValidDetails()[pri:0, instance:org.example.SmokeTestCases@30f842ca]" started-at="2025-10-31T00:36:14 IST" name="RegisterNewAccountWithValidDetails" finished-at="2025-10-31T00:36:17 IST" duration-ms="3253" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- RegisterNewAccountWithValidDetails -->
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:org.example.SmokeTestCases@30f842ca]" started-at="2025-10-31T00:36:17 IST" name="TearDown" finished-at="2025-10-31T00:36:18 IST" duration-ms="907" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearDown -->
+        <test-method is-config="true" signature="TearUp()[pri:0, instance:org.example.SmokeTestCases@30f842ca]" started-at="2025-10-31T00:36:18 IST" name="TearUp" finished-at="2025-10-31T00:36:22 IST" duration-ms="3781" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearUp -->
+        <test-method signature="LoginRegisteredAccount()[pri:0, instance:org.example.SmokeTestCases@30f842ca]" started-at="2025-10-31T00:36:22 IST" name="LoginRegisteredAccount" finished-at="2025-10-31T00:36:23 IST" depends-on-methods="org.example.SmokeTestCases.RegisterNewAccountWithValidDetails" duration-ms="847" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginRegisteredAccount -->
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:org.example.SmokeTestCases@30f842ca]" started-at="2025-10-31T00:36:23 IST" name="TearDown" finished-at="2025-10-31T00:36:24 IST" duration-ms="820" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearDown -->
+      </class> <!-- org.example.SmokeTestCases -->
+      <class name="org.example.EndToEnd">
+        <test-method is-config="true" signature="TearUp()[pri:0, instance:org.example.EndToEnd@33ecda92]" started-at="2025-10-31T00:35:33 IST" name="TearUp" finished-at="2025-10-31T00:36:02 IST" duration-ms="29224" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearUp -->
+        <test-method signature="AddProductIntoCart()[pri:0, instance:org.example.EndToEnd@33ecda92]" started-at="2025-10-31T00:36:02 IST" name="AddProductIntoCart" finished-at="2025-10-31T00:36:06 IST" duration-ms="4161" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AddProductIntoCart -->
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:org.example.EndToEnd@33ecda92]" started-at="2025-10-31T00:36:06 IST" name="TearDown" finished-at="2025-10-31T00:36:07 IST" duration-ms="1152" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearDown -->
+      </class> <!-- org.example.EndToEnd -->
+    </test> <!-- TestCases -->
+  </suite> <!-- All Test Suite -->
+</testng-results>
