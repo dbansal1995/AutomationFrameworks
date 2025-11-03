@@ -7,9 +7,7 @@
     </listeners>
     <!-- preserve-order="false"-->
 
-
-
-    <test verbose="2" name="TestCases">
+   <test verbose="2" name="TestCases">
 
         <classes>
             <class name="org.example.EndToEnd">

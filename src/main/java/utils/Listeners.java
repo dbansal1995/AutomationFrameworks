@@ -36,14 +36,14 @@ public class Listeners extends Base implements ITestListener {
     public void onTestSuccess(ITestResult result) {
         ITestListener.super.onTestSuccess(result);
         System.out.println("Test Case Passed " + result.getMethod().getMethodName());
-        test.log(Status.PASS, result.getMethod().getMethodName());
+        extentTest.get().log(Status.PASS, result.getMethod().getMethodName());
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         ITestListener.super.onTestFailure(result);
-        test.log(Status.FAIL, result.getMethod().getMethodName());
-        test.fail(result.getThrowable());
+        extentTest.get().log(Status.FAIL, result.getMethod().getMethodName());
+        extentTest.get().fail(result.getThrowable());
 
         try {
             driver = (WebDriver) result.getTestClass().getRealClass().getField("driver")
@@ -51,7 +51,10 @@ public class Listeners extends Base implements ITestListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        if (driver == null) {
+            System.out.println("Driver was null in listener, skipping screenshot capture.");
+            return; // prevents NPE if test skipped or init failed
+        }
         TakesScreenshot ts = (TakesScreenshot) driver;
         File screenshot = ts.getScreenshotAs(OutputType.FILE);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy_HHmmss");
@@ -64,7 +67,7 @@ public class Listeners extends Base implements ITestListener {
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }
-        test.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\src\\main\\java\\" + screenShotName + ".png");
+        extentTest.get().addScreenCaptureFromPath(System.getProperty("user.dir") + "\\src\\main\\java\\" + screenShotName + ".png");
         //new File(System.getProperty("user.dir")+"\\src\\main\\screenshot.png"))
         System.out.println("Test Case Failed" + result.getTestName());
     }

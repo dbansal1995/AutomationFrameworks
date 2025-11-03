@@ -2,10 +2,8 @@ package org.example;
 
 import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -21,13 +19,9 @@ public class Base {
     public Properties prop;
 
     public void initBrowsers() throws IOException {
-        prop = new Properties();
-        // System.out.println(System.getProperty("user.dir"));
 
-        FileInputStream fs = new FileInputStream(new File(System.getProperty("user.dir") + "\\src\\main\\java\\utils\\data.properties"));
 
-        prop.load(fs);
-        String Browser = System.getProperty("Browser") != null ? System.getProperty("Browser") : prop.getProperty("Browser");
+        String Browser = System.getProperty("Browser") != null ? System.getProperty("Browser") :  loadProperty("Browser");;
        // String Browser = prop.getProperty("Browser");
         if (Browser.equalsIgnoreCase("Chrome")) {
             driver = new ChromeDriver();
@@ -45,6 +39,20 @@ public class Base {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
     }
+
+    public String loadProperty(String PropertyName) throws IOException {
+
+        prop = new Properties();
+        // System.out.println(System.getProperty("user.dir"));
+
+        FileInputStream fs = new FileInputStream(new File(System.getProperty("user.dir") + "\\src\\main\\java\\utils\\data.properties"));
+
+        prop.load(fs);
+
+        return prop.getProperty(PropertyName);
+
+    }
+
 
     public @Nullable String launchApplication() {
 

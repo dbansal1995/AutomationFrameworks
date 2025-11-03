@@ -23,6 +23,7 @@ public class SmokeTestCases extends Base {
     public void TearUp() throws IOException {
         initBrowsers();
         launchApplication();
+        System.out.println("Driver initialized"+driver);
 
     }
 
@@ -37,7 +38,7 @@ public class SmokeTestCases extends Base {
 
     }
 
-    @Test(retryAnalyzer = utils.RetryClass.class, groups = "smoke")
+    @Test(retryAnalyzer = utils.RetryClass.class)
     public void RegisterNewAccountWithInvalidDetails() throws IOException, InterruptedException {
         //Verify Searched Product
         HomePage hm = new HomePage(driver);

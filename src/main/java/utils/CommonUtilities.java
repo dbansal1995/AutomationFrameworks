@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.sql.DriverManager;
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
@@ -46,6 +47,12 @@ public class CommonUtilities extends Base {
 
         return RandomStringUtils.randomAlphanumeric(length);
 
+
+    }
+
+    public static String generateRandomNumeric(int length) {
+
+        return RandomStringUtils.randomNumeric(length);
 
     }
 

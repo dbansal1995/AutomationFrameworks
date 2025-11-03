@@ -1,31 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite" parallel="classes" thread-count="4">
+<suite name="All Test Suite" parallel="classes" thread-count="2">
 
-    <listeners>
-        <listener class-name="utils.Listeners"></listener>
-    </listeners>
+
     <!-- preserve-order="false"-->
-    <test verbose="2" name="TestCases">
+    <test verbose="2" name="SmokeTestCases">
 
-        <groups>
-            <run>
-                <include name="smoke"></include>
-            </run>
-        </groups>
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="smoke"></include>-->
+<!--            </run>-->
+<!--        </groups>-->
+
         <classes>
-            <class name="org.example.EndToEnd">
-                <methods>
-                    <include name="AddProductIntoCart"/>
-                </methods>
-            </class>
             <class name="org.example.SmokeTestCases">
-                <methods>
-                    <include name="VerifySearchFuntioanlity"/>
-                    <include name="RegisterNewAccountWithInvalidDetails"/>
-                    <include name="RegisterNewAccountWithValidDetails"/>
-                    <include name="LoginRegisteredAccount"/>
-                </methods>
             </class>
         </classes>
     </test>
