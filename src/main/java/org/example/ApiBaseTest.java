@@ -19,7 +19,7 @@ public class ApiBaseTest {
 
     }
 
-    public Response post_request(String payload,String path){
+    public Response postRequest(String payload,String path){
         RestAssured.baseURI = baseURL();
         RestAssured.useRelaxedHTTPSValidation();
         Response response=RestAssured.given().contentType(ContentType.JSON).accept(ContentType.JSON).log().all()
@@ -30,13 +30,13 @@ public class ApiBaseTest {
 
     }
 
-    public Response post_request_file(File payload, String path){
-        String Endpoint = baseURL();
-        Response respone=RestAssured.given().contentType(ContentType.JSON).log().all()
-                .body(new File(System.getProperty("user.dir")+""))
+    public Response postRequestFile(File filePath, String path){
+        String baseURL = baseURL();
+        Response response=RestAssured.given().contentType(ContentType.JSON).log().all()
+                .body(new File(System.getProperty("user.dir")+filePath))
                 .when().post(path);
 
-        return respone;
+        return response;
     }
 
     public String extractResponse(Response response){
@@ -59,7 +59,7 @@ public class ApiBaseTest {
     }
 
 
-    public Response post_request_pojo(String path,Object object){
+    public Response postRequestPojo(String path,Object object){
         String Endpoint = baseURL();
 //         object=new AddBook("Divyansh QA Book",CommonUtilities.generateRandomString(5),CommonUtilities.generateRandomNumeric(////6),"Divyansh bansal");
 //        ab.setAuthor("Divyansh Bansal");

@@ -6,6 +6,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.example.ApiBaseTest;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pojo.AddBook;
@@ -21,17 +22,17 @@ import java.util.Map;
 public class LibraryAPITestCases extends ApiBaseTest {
 
 
-    @Test(testName = "End to End Verify book has been added and delete successfully")
-    public void verifyAddDeleteBookEndToEnd(){
+    @Test(dataProvider = "BookDetails", testName = "End to End Verify book has been added and delete successfully")
+    public void verifyAddDeleteBookEndToEnd(String bookName,String authorName){
 
         String isbn=CommonUtilities.generateRandomString(5);
         String aisle=CommonUtilities.generateRandomNumeric(5);
         //From String Payload method
-       //Response AddBookresponse=post_request(BookLibraryAPIPayload.AddBook(isbn,aisle,"Divyansh Bansal"),"/Library/Addbook.php");
+       //Response AddBookresponse=postRequest(BookLibraryAPIPayload.AddBook(isbn,aisle,"Divyansh Bansal"),"/Library/Addbook.php");
 
         //From Pojo class
-        AddBook addBook=new AddBook("Divyansh Pojo",isbn,aisle,"Divyansh Bansal");
-        Response AddBookresponse=post_request_pojo("/Library/Addbook.php",addBook);
+        AddBook addBook=new AddBook(bookName,isbn,aisle,authorName);
+        Response AddBookresponse=postRequestPojo("/Library/Addbook.php",addBook);
 
         String Add_book_response=extractResponse(AddBookresponse);
         System.out.println("Response of Add Book :"+Add_book_response);
@@ -43,13 +44,13 @@ public class LibraryAPITestCases extends ApiBaseTest {
 
         //Get Book by Author's Name
         Map<String,String> map=new HashMap<>();
-        map.put("AuthorName","Divyansh Bansal");
+        map.put("AuthorName",authorName);
         Response response1=getRequest("Library/GetBook.php",map);
         String GetResponseByAuthor=extractResponse(response1);
         System.out.println(GetResponseByAuthor);
 
         JsonPath js=apiUtils.jsonPath(GetResponseByAuthor);
-        Assert.assertTrue(js.getList("$").size()>1);
+        Assert.assertTrue(js.getList("$").size()>=1);
         System.out.println("First Book "+js.get("[0].book_name"));
         System.out.println("Second Book: "+js.get("[1].book_name"));
 
@@ -60,15 +61,14 @@ public class LibraryAPITestCases extends ApiBaseTest {
         String BookIdResponse=extractResponse(getRequest("Library/GetBook.php",map1));
         JsonPath js1=apiUtils.jsonPath(BookIdResponse);
 
-        Assert.assertEquals(js1.get("[0].book_name"),"Learn Appium Automation with Java");
+        Assert.assertEquals(js1.get("[0].book_name"),bookName);
         Assert.assertEquals(js1.get("[0].isbn"),isbn);
         Assert.assertEquals(js1.get("[0].aisle"),aisle);
-        Assert.assertEquals(js1.get("[0].author"),"Divyansh Bansal");
+        Assert.assertEquals(js1.get("[0].author"),authorName);
 
         //Delete Book
         DeleteBook deleteBook=new DeleteBook(Book_ID);
         String deleteResponse=extractResponse(deleteRequestPojo(deleteBook,"Library/DeleteBook.php"));
-
 
 
        // DeleteBookResponse deleteBookResponse=deserializeJson(deleteRequestPojo(deleteBook,"Library/DeleteBook.php"),DeleteBookResponse.class);
@@ -81,5 +81,15 @@ public class LibraryAPITestCases extends ApiBaseTest {
     }
 
 
+ @DataProvider(name = "BookDetails")
+ public Object[][] bookData()
+ {
+     return new Object[][]{
+             {"Selenium Automation Framework Book","Divyansh Bansal"},
+             {"RestAssured Automation Framework Book","Divyansh second user"}
+
+ };
+
+ }
 
 }
