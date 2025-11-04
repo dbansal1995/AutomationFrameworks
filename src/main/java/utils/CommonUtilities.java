@@ -8,9 +8,12 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.sql.DriverManager;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.time.Duration;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class CommonUtilities extends Base {
@@ -56,9 +59,9 @@ public class CommonUtilities extends Base {
 
     }
 
-    public void switchToFramw(WebElement frameElement) {
+    public void switchToFrame(WebElement frameElement) {
         driver.switchTo().frame(frameElement);
-        driver.switchTo().defaultContent();
+        //driver.switchTo().defaultContent();
     }
 
     public void HandleAlerts(String decision) {
@@ -87,5 +90,24 @@ public class CommonUtilities extends Base {
         return action;
     }
 
+
+    public String findBrokenLink(List<WebElement> brokenLinks) throws IOException {
+
+        for(int i=0;i<brokenLinks.size();i++) {
+
+            String url=brokenLinks.get(i).getText();
+            HttpURLConnection connection=(HttpURLConnection)new URL(url).openConnection();
+            connection.setRequestMethod("HEAD");
+            connection.connect();
+            int responseCode=connection.getResponseCode();
+
+            if(responseCode>400){
+                System.out.println("Broken Link: "+url);
+                return url;
+            }
+
+        }
+        return null;
+    }
 
 }
