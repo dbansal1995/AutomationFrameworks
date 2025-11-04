@@ -61,7 +61,7 @@ public class ApiBaseTest {
 
     public Response post_request_pojo(String path,Object object){
         String Endpoint = baseURL();
-         object=new AddBook("Divyansh QA Book",CommonUtilities.generateRandomString(5),CommonUtilities.generateRandomString(6),"Divyansh bansal");
+//         object=new AddBook("Divyansh QA Book",CommonUtilities.generateRandomString(5),CommonUtilities.generateRandomNumeric(////6),"Divyansh bansal");
 //        ab.setAuthor("Divyansh Bansal");
 //        ab.setName("Divyansh QA Book");
 //        ab.setIsbn(CommonUtilities.generateRandomString(5));

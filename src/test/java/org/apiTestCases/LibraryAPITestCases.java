@@ -24,15 +24,14 @@ public class LibraryAPITestCases extends ApiBaseTest {
     @Test(testName = "End to End Verify book has been added and delete successfully")
     public void verifyAddDeleteBookEndToEnd(){
 
-        String base_url=baseURL();
         String isbn=CommonUtilities.generateRandomString(5);
         String aisle=CommonUtilities.generateRandomNumeric(5);
         //From String Payload method
-       Response AddBookresponse=post_request(BookLibraryAPIPayload.AddBook(isbn,aisle,"Divyansh Bansal"),"/Library/Addbook.php");
+       //Response AddBookresponse=post_request(BookLibraryAPIPayload.AddBook(isbn,aisle,"Divyansh Bansal"),"/Library/Addbook.php");
 
         //From Pojo class
-//        AddBook addBook=new AddBook("Divyansh Pojo",isbn,aisle,"Divyansh Bansal");
-//        Response AddBookresponse=post_request_pojo("/Library/Addbook.php",addBook);
+        AddBook addBook=new AddBook("Divyansh Pojo",isbn,aisle,"Divyansh Bansal");
+        Response AddBookresponse=post_request_pojo("/Library/Addbook.php",addBook);
 
         String Add_book_response=extractResponse(AddBookresponse);
         System.out.println("Response of Add Book :"+Add_book_response);
