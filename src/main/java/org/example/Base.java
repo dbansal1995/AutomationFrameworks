@@ -3,7 +3,9 @@ package org.example;
 import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -24,12 +26,18 @@ public class Base {
         String Browser = System.getProperty("Browser") != null ? System.getProperty("Browser") :  loadProperty("Browser");;
        // String Browser = prop.getProperty("Browser");
         if (Browser.equalsIgnoreCase("Chrome")) {
+            ChromeOptions options=new ChromeOptions();
+            options.setExperimentalOption("","");
             driver = new ChromeDriver();
+
+
 
 
         } else if (Browser.equalsIgnoreCase("Firefox")) {
 
             driver = new FirefoxDriver();
+            FirefoxProfile firefoxProfile=new FirefoxProfile();
+            firefoxProfile.setPreference("","");
 
         } else if (Browser.equals("Safari")) {
             //Safari Code
@@ -45,7 +53,10 @@ public class Base {
         prop = new Properties();
         // System.out.println(System.getProperty("user.dir"));
 
-        FileInputStream fs = new FileInputStream(new File(System.getProperty("user.dir") + "\\src\\main\\java\\utils\\data.properties"));
+        //Mac
+        FileInputStream fs = new FileInputStream(new File(System.getProperty("user.dir") + "/src/main/java/utils/data.properties"));
+        //Windows
+        //FileInputStream fs = new FileInputStream(new File(System.getProperty("user.dir") + "\\src\\main\\java\\utils\\data.properties"));
 
         prop.load(fs);
 

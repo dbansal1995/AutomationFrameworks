@@ -48,5 +48,4 @@ public class LoginPage extends CommonUtilities {
         return LoginPageHeading.getText();
     }
 
-
 }

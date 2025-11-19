@@ -48,7 +48,6 @@ public class SmokeTestCases extends Base {
         // Assert.assertEquals(rp.returnAlertMessage(),"Warning: You must agree to the Privacy Policy!");
         Assert.assertEquals(rp.returnErrorMessage(), "First Name must be between 1 and 32 characters!");
 
-
     }
 
     @Test

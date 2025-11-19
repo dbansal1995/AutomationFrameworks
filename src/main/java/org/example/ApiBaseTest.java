@@ -4,8 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import pojo.AddBook;
-import utils.CommonUtilities;
+import io.restassured.specification.RequestSpecification;
 
 import java.io.File;
 import java.util.Map;
@@ -90,5 +89,45 @@ public class ApiBaseTest {
         System.out.println(response.body());
         return response;
     }
+
+    public RequestSpecification reqSpecBuilder(Map<String, String> headers, Map<String, String> params, Map<String,String> formData){
+
+        RestAssured.baseURI=baseURL();
+        RequestSpecBuilder spec=new RequestSpecBuilder();
+
+        if(headers!=null){
+            spec.addHeaders(headers);
+        }
+
+        if(params!=null){
+            spec.addQueryParams(params);
+        }
+        if(formData!=null){
+            spec.addFormParams(formData);
+
+        }
+        return spec.build();
+
+    }
+    public RequestSpecification reqSpecBuilderWithHeaders(Map<String, String> headers){
+
+
+        return reqSpecBuilder(headers,null,null);
+
+    }
+    public RequestSpecification reqSpecBuilderWithParams(Map<String, String> params){
+
+
+        return reqSpecBuilder(null,params,null);
+
+    }
+
+    public RequestSpecification reqSpecBuilderWithFormData(Map<String, String> formData){
+
+
+        return reqSpecBuilder(null,null,formData);
+
+    }
+
 
 }

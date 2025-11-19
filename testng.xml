@@ -4,6 +4,7 @@
 
     <listeners>
         <listener class-name="utils.Listeners"></listener>
+        <listener class-name="utils.RetryTransformer"></listener>
     </listeners>
     <!-- preserve-order="false"-->
 

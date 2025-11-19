@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -108,6 +109,12 @@ public class CommonUtilities extends Base {
 
         }
         return null;
+    }
+
+    public Robot robotutils() throws AWTException {
+
+        Robot robot=new Robot();
+        return robot;
     }
 
 }

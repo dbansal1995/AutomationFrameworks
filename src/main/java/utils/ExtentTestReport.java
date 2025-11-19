@@ -6,7 +6,11 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 public class ExtentTestReport {
 
     public static ExtentReports ExtentReportUtility() {
-        String path = System.getProperty("user.dir") + "\\src\\main\\java\\report.html";
+        //MAC
+        String path = System.getProperty("user.dir") + "/src/main/java/report.html";
+
+        //Windows
+       // String path = System.getProperty("user.dir") + "\\src\\main\\java\\report.html";
         ExtentSparkReporter reporter = new ExtentSparkReporter(path);
         reporter.config().setReportName("Divyansh Test Report");
         reporter.config().setDocumentTitle("Test Result Report");

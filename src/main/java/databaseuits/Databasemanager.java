@@ -27,6 +27,9 @@ public class Databasemanager extends Base {
         ResultSet result=statement.executeQuery(query);
         result.next();
         return result;
+
+
+
     }
 
 }
