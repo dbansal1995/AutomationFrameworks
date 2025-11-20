@@ -1,6 +1,7 @@
 package org.example;
 
 import org.jspecify.annotations.Nullable;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -19,6 +20,7 @@ public class Base {
     public WebDriver driver;
     public WebDriverWait wait;
     public Properties prop;
+    public JavascriptExecutor js;
 
     public void initBrowsers() throws IOException {
 
@@ -26,12 +28,9 @@ public class Base {
         String Browser = System.getProperty("Browser") != null ? System.getProperty("Browser") :  loadProperty("Browser");;
        // String Browser = prop.getProperty("Browser");
         if (Browser.equalsIgnoreCase("Chrome")) {
-            ChromeOptions options=new ChromeOptions();
-            options.setExperimentalOption("","");
+//            ChromeOptions options=new ChromeOptions();
+//            options.setExperimentalOption("","");
             driver = new ChromeDriver();
-
-
-
 
         } else if (Browser.equalsIgnoreCase("Firefox")) {
 
@@ -65,10 +64,10 @@ public class Base {
     }
 
 
-    public @Nullable String launchApplication() {
+    public  String launchApplication(String AppUrl) {
 
-        String url = prop.getProperty("URL");
-
+        String url = prop.getProperty(AppUrl);
+        System.out.println("Application URL: "+url);
         driver.get(url);
 
         return driver.getTitle();

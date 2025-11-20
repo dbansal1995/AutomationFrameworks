@@ -22,7 +22,7 @@ public class EndToEnd extends Base {
     @BeforeClass
     public void TearUp() throws IOException {
         initBrowsers();
-        launchApplication();
+        launchApplication("URL");
 
     }
 

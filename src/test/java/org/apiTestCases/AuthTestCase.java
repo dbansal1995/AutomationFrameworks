@@ -21,8 +21,6 @@ public class AuthTestCase extends ApiBaseTest {
     @Test
     public void getCourseDetails() throws IOException {
 
-
-
         Map<String,String> formData=new HashMap<>();
         formData.put("client_id","692183103107-p0m7ent2hk7suguv4vq22hjcfhcr43pj.apps.googleusercontent.com");
         formData.put("client_secret","erZOWM9g3UtwNRj340YYaK_W");

@@ -36,7 +36,7 @@ public class stepDefinitionsImpl extends Base {
     }
     @Given("Application is launched")
     public void Application_is_launched(){
-        launchApplication();
+        launchApplication("URL");
 
     }
 

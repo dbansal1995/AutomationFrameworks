@@ -1,5 +1,6 @@
 package Pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,9 +15,8 @@ public class LoginPage extends CommonUtilities {
 
     private static final Logger log = LoggerFactory.getLogger(LoginPage.class);
     WebDriver driver;
-
+    public JavascriptExecutor js;
     public LoginPage(WebDriver driver) {
-
         this.driver = driver;
         PageFactory.initElements(driver, this);
 

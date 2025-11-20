@@ -22,7 +22,7 @@ public class SmokeTestCases extends Base {
     @BeforeMethod
     public void TearUp() throws IOException {
         initBrowsers();
-        launchApplication();
+        launchApplication("URL");
         System.out.println("Driver initialized"+driver);
 
     }

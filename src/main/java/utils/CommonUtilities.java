@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -18,11 +19,12 @@ import java.util.List;
 import java.util.Set;
 
 public class CommonUtilities extends Base {
-    JavascriptExecutor js;
+    public JavascriptExecutor js;
     WebDriverWait wait;
 
-    public JavascriptExecutor scrollScreen(int x) {
 
+
+    public JavascriptExecutor scrollScreen(int x) {
         js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0," + x + ")");
         return js;
@@ -34,10 +36,10 @@ public class CommonUtilities extends Base {
         return js;
     }
 
-    public String getWindowHandles() {
+    public String getWindows() {
         Set<String> handles = driver.getWindowHandles();
         Iterator<String> it = handles.iterator();
-
+        String parentWindow = it.next();
         String childWindow = it.next();
         driver.switchTo().window(childWindow);
         return childWindow;
@@ -92,11 +94,14 @@ public class CommonUtilities extends Base {
     }
 
 
-    public String findBrokenLink(List<WebElement> brokenLinks) throws IOException {
+    public Boolean findBrokenLink(List<WebElement> brokenLinks) throws IOException {
 
+
+        boolean flag=false;
         for(int i=0;i<brokenLinks.size();i++) {
 
-            String url=brokenLinks.get(i).getText();
+            String url=brokenLinks.get(i).getAttribute("href");
+            System.out.println(url);
             HttpURLConnection connection=(HttpURLConnection)new URL(url).openConnection();
             connection.setRequestMethod("HEAD");
             connection.connect();
@@ -104,11 +109,12 @@ public class CommonUtilities extends Base {
 
             if(responseCode>400){
                 System.out.println("Broken Link: "+url);
-                return url;
+                flag=true;
+                return flag;
             }
 
         }
-        return null;
+        return flag;
     }
 
     public Robot robotutils() throws AWTException {
